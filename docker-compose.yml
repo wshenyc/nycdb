@@ -1,21 +1,25 @@
 version: '2'
 services:
   app:
-    build: .
+    build:
+      context: ./
+      dockerfile: docker/python
     volumes:
       - .:/nycdb
     working_dir: /nycdb
     environment:
       - NYCDB_POSTGRES_HOST=db
       - NYCDB_TEST_POSTGRES_HOST=db
-      - NYCDB_TEST_POSTGRES_DB=nycdb_test
+      - NYCDB_TEST_POSTGRES_DB=nycdb
       - NYCDB_TEST_POSTGRES_USER=nycdb
       - NYCDB_TEST_POSTGRES_PASSWORD=nycdb
       - NYCDB_TEST_POSTGRES_PORT=5432
     links:
       - db
   db:
-    image: postgres:11
+    build:
+      context: ./
+      dockerfile: docker/postgres
     environment:
       - POSTGRES_PASSWORD=nycdb
       - POSTGRES_USER=nycdb
