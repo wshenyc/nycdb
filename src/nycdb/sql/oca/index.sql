@@ -17,6 +17,7 @@ CREATE INDEX ON oca_events (indexnumberid);
 ALTER TABLE oca_appearances ADD PRIMARY KEY (indexnumberid, appearanceid);
 CREATE INDEX ON oca_appearances (indexnumberid);
 CREATE INDEX ON oca_appearances (appearanceid);
+CREATE INDEX ON oca_appearances (appearancedatetime);
 
 CREATE INDEX ON oca_appearance_outcomes (indexnumberid, appearanceid);
 CREATE INDEX ON oca_appearance_outcomes (indexnumberid);
